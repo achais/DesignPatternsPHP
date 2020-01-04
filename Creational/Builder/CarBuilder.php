@@ -10,12 +10,12 @@ class CarBuilder implements BuilderInterface
 {
     private $car;
 
-    public function addEngine(): BuilderInterface
+    public function addEngine()
     {
         $this->car->setPart('engine', new Parts\Engine());
     }
 
-    public function addWheel(): BuilderInterface
+    public function addWheel()
     {
         $this->car->setPart('wheelLF', new Parts\Wheel());
         $this->car->setPart('wheelRF', new Parts\Wheel());
@@ -23,14 +23,14 @@ class CarBuilder implements BuilderInterface
         $this->car->setPart('wheelRR', new Parts\Wheel());
     }
 
-    public function addDoors(): BuilderInterface
+    public function addDoors()
     {
         $this->car->setPart('rightDoor', new Parts\Door());
         $this->car->setPart('leftDoor', new Parts\Door());
         $this->car->setPart('trunkLid', new Parts\Door());
     }
 
-    public function createVehicle(): BuilderInterface
+    public function createVehicle()
     {
         $this->car = new Parts\Car();
     }
