@@ -25,4 +25,29 @@ class PrototypeTest extends TestCase
             $this->assertInstanceOf(BarBookPrototype::class, $book);
         }
     }
+
+    public function testCloneLessThanNew()
+    {
+        $fooPrototype = new FooBookPrototype();
+
+        // 使用 new 耗时
+        $newStartTime = microtime(true);
+        for ($i = 0; $i < 1000000; $i++) {
+            $book = new FooBookPrototype();
+            $book->setTitle('Foo Book No ' . $i);
+        }
+        $newEndTime = microtime(true);
+        $newRunTime = $newEndTime - $newStartTime;
+
+        // 使用 clone 耗时
+        $cloneStartTime = microtime(true);
+        for ($i = 0; $i < 1000000; $i++) {
+            $book = clone $fooPrototype;
+            $book->setTitle('Bar Book No ' . $i);
+        }
+        $cloneEndTime = microtime(true);
+        $cloneRunTime = $cloneEndTime - $cloneStartTime;
+
+        $this->assertLessThan($newRunTime, $cloneRunTime);
+    }
 }

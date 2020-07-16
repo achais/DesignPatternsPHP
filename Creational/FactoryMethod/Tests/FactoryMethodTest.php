@@ -16,14 +16,18 @@ class FactoryMethodTest extends TestCase
     {
         $loggerFactory = new StdoutLoggerFactory();
         $logger = $loggerFactory->createLogger();
+        $logger->log('hello stdout logger.');
 
         $this->assertInstanceOf(StdoutLogger::class, $logger);
     }
 
     public function testCanCreateFileLogger()
     {
-        $loggerFactory = new FileLoggerFactory(sys_get_temp_dir());
+        $filePath = 'temp.log';
+
+        $loggerFactory = new FileLoggerFactory($filePath);
         $logger = $loggerFactory->createLogger();
+        $logger->log('hello file logger.');
 
         $this->assertInstanceOf(FileLogger::class, $logger);
     }
