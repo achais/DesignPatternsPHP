@@ -3,7 +3,7 @@
 namespace DesignPatterns\Structural\Bridge;
 
 /**
- * 创建 Service 子类 HelloWorldService 。
+ * 创建 Service 子类 HelloWorldService
  */
 class HelloWorldService extends Service
 {

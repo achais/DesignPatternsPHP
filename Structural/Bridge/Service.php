@@ -3,7 +3,7 @@
 namespace DesignPatterns\Structural\Bridge;
 
 /**
- * 创建抽象类 Service。
+ * 创建抽象类 Service
  */
 abstract class Service
 {
